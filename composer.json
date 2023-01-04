@@ -1,0 +1,16 @@
+{
+  "name": "prismo-smartpro/httprequest",
+  "description": "Smart PRO Technology",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-or-later",
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmartPRO\\Technology\\": "src/"
+    }
+  }
+}
