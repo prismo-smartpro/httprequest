@@ -14,8 +14,8 @@ class Request
         $config = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_SSL_VERIFYPEER => ($options["ssl"] ?? false),
-            CURLOPT_SSL_VERIFYHOST => ($options["ssl"] ?? false),
+            CURLOPT_SSL_VERIFYPEER => (empty($options["ssl"]) ? false : 1),
+            CURLOPT_SSL_VERIFYHOST => (empty($options["ssl"]) ? false : 2),
             CURLOPT_TIMEOUT => ($options["timeout"] ?? 180),
             CURLOPT_CONNECTTIMEOUT => 30,
             CURLOPT_HTTPHEADER => ($options["headers"] ?? []),
@@ -27,7 +27,7 @@ class Request
             $parse = explode(":", $options["auth"]);
             if (!empty($parse[0]) and !empty($parse[1])) {
                 $config[CURLOPT_USERNAME] = $parse[0];
-                $config[CURLOPT_USERPWD] = $parse[1];
+                $config[CURLOPT_PASSWORD] = $parse[1];
             }
         }
 
